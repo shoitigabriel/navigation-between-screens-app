@@ -1,0 +1,1 @@
+Este projeto é um aplicativo Android simples que demonstra como realizar a navegação entre diferentes telas (Activities). Ele exemplifica o uso de Intents para transição entre telas e o envio de dados entre elas, servindo como um guia prático para quem está começando no desenvolvimento Android e quer entender melhor como funciona a comunicação entre componentes dentro de um app.
