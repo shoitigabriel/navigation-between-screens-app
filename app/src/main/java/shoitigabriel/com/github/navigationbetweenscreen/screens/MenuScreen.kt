@@ -42,7 +42,8 @@ fun MenuScreen(modifier: Modifier = Modifier , navController: NavController) {
                 .align(Alignment.Center)
         ) {
             Button(
-                onClick = { navController.navigate("perfil/Fulano de Tal") },
+                //A navegação no MenuScreen foi atualizada para enviar os dois valores (“Fulano de Tal” e “27”).
+                onClick = { navController.navigate("perfil/Fulano de Tal/27") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {
@@ -54,7 +55,6 @@ fun MenuScreen(modifier: Modifier = Modifier , navController: NavController) {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                //envio de um valor real para o parâmetro opcional quando o botão Pedidos é clicado.
                 onClick = { navController.navigate("pedidos?cliente=Cliente XPTO") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)

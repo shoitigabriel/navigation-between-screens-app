@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -45,12 +46,23 @@ class MainActivity : ComponentActivity() {
                         ) {
                             PedidosScreen(modifier = Modifier.padding(innerPadding), navController, it.arguments?.getString("cliente"))
                         }
-                        composable(route = "perfil/{nome}") {
+                        //A rota deixa de ter 1 parâmetro e passa a ter 2 parâmetros obrigatórios. Foram declarados os tipos dos parâmetros usando navArgument: nome(String), idade (Int)
+                        composable(
+                            route = "perfil/{nome}/{idade}",
+                            arguments = listOf(
+                                navArgument("nome") { type = NavType.StringType },
+                                navArgument("idade") { type = NavType.IntType }
+                            )
+                        ) {
                             val nome: String? = it.arguments?.getString("nome", "Usuário Genérico")
+                            //Dentro do composable, foi adicionado o código para recuperar a idade
+                            val idade: Int? = it.arguments?.getInt("idade", 0)
                             PerfilScreen(
                                 modifier = Modifier.padding(innerPadding),
                                 navController,
-                                nome!!
+                                //A chamada da PerfilScreen passa a enviar nome e idade.
+                                nome!!,
+                                idade!!
                             )
                         }
                     }
