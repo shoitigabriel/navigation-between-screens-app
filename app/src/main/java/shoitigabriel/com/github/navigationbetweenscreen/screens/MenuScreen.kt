@@ -42,7 +42,6 @@ fun MenuScreen(modifier: Modifier = Modifier , navController: NavController) {
                 .align(Alignment.Center)
         ) {
             Button(
-                //É enviado um parâmetro obrigatório "Fulano de Tal" junto da rota. Sem isso, o Navigation Compose não encontra a rota e dá erro.
                 onClick = { navController.navigate("perfil/Fulano de Tal") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)

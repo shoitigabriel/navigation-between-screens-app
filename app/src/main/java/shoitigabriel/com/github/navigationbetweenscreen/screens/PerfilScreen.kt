@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-//A função PerfilScreen passou a exigir um argumento chamado nome: String. A tela precisa receber e usar esse parâmetro.
 fun PerfilScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
@@ -30,7 +29,6 @@ fun PerfilScreen(
             .padding(32.dp)
     ) {
         Text(
-            //O texto exibido na tela é dinâmico. A tela de Perfil se adapta ao nome enviado pela navegação.
             text = "PERFIL - $nome",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,

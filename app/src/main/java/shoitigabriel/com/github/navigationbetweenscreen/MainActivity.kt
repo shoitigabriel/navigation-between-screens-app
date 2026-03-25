@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import shoitigabriel.com.github.navigationbetweenscreen.screens.LoginScreen
 import shoitigabriel.com.github.navigationbetweenscreen.screens.MenuScreen
 import shoitigabriel.com.github.navigationbetweenscreen.screens.PedidosScreen
@@ -36,15 +37,24 @@ class MainActivity : ComponentActivity() {
                         composable(route = "menu") {
                             MenuScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
-                        composable(route = "pedidos") {
-                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController)
+                        composable(
+                            //passagem de parâmetro opcional cliente para a tela Pedidos.
+                            route = "pedidos?cliente={cliente}",
+                            //A rota fixa pedidos foi substituída pela rota pedidos?cliente={cliente} com argumento declarado no navArgument.
+                            arguments = listOf(navArgument("cliente") {
+                                //Como cliente tem valor padrão, a navegação ocorre mesmo sem envio do parâmetro.
+                                defaultValue = "Cliente Genérico"
+                            })
+                        ) {
+                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController, it.arguments?.getString("cliente"))
                         }
-                        //A rota possui agora um parâmetro obrigatório chamado {nome}.
                         composable(route = "perfil/{nome}") {
-                            //Dentro do composable, o parâmetro é recuperado.
                             val nome: String? = it.arguments?.getString("nome", "Usuário Genérico")
-                            //Esse valor é enviado para a PerfilScreen.
-                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController, nome!!)
+                            PerfilScreen(
+                                modifier = Modifier.padding(innerPadding),
+                                navController,
+                                nome!!
+                            )
                         }
                     }
 
