@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-//A PedidosScreen foi atualizada para receber o parâmetro cliente
 fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, cliente: String?) {
     Box(modifier = modifier
         .fillMaxSize()
@@ -36,7 +35,6 @@ fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, c
             modifier = Modifier.align(Alignment.Center)
         ) {
             Text(
-                //O texto da tela é dinâmico. A tela passa a exibir o cliente enviado.
                 text = "PEDIDOS - $cliente",
                 fontSize = 20.sp,
                 color = Color.Blue

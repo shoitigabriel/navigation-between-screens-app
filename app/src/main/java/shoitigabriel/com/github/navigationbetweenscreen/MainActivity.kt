@@ -38,11 +38,8 @@ class MainActivity : ComponentActivity() {
                             MenuScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
                         composable(
-                            //passagem de parâmetro opcional cliente para a tela Pedidos.
                             route = "pedidos?cliente={cliente}",
-                            //A rota fixa pedidos foi substituída pela rota pedidos?cliente={cliente} com argumento declarado no navArgument.
                             arguments = listOf(navArgument("cliente") {
-                                //Como cliente tem valor padrão, a navegação ocorre mesmo sem envio do parâmetro.
                                 defaultValue = "Cliente Genérico"
                             })
                         ) {
